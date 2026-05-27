@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¡Nuestra Aventura en Costa Rica! 🌴</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:#fff9f0;overflow-x:hidden}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,#ff6b9d 0%,#ff9a5c 35%,#ffd166 65%,#06d6a0 100%);padding:52px 24px 68px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.07'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/svg%3E")}
+.floating-emojis{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.fe{position:absolute;font-size:28px;animation:floatUp 6s ease-in-out infinite;opacity:.65}
+.fe:nth-child(1){left:4%;top:18%;animation-delay:0s}
+.fe:nth-child(2){left:14%;top:62%;animation-delay:1s;font-size:22px}
+.fe:nth-child(3){left:79%;top:14%;animation-delay:.5s}
+.fe:nth-child(4){left:88%;top:56%;animation-delay:2s;font-size:22px}
+.fe:nth-child(5){left:50%;top:6%;animation-delay:1.5s;font-size:20px}
+.fe:nth-child(6){left:68%;top:72%;animation-delay:3s;font-size:24px}
+.fe:nth-child(7){left:32%;top:78%;animation-delay:2.5s;font-size:20px}
+@keyframes floatUp{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-14px) rotate(5deg)}}
+@keyframes confettiFall{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(120px) scale(0.5)}}
+.hero-inner{position:relative;z-index:1}
+.hero h1{font-family:'Baloo 2',cursive;font-size:clamp(34px,8vw,70px);font-weight:800;color:white;text-shadow:3px 4px 0 rgba(0,0,0,.15);line-height:1.1;margin-bottom:10px}
+.hero .sub{font-family:'Baloo 2',cursive;font-size:clamp(15px,3vw,21px);color:rgba(255,255,255,.95);margin-bottom:22px;text-shadow:1px 2px 0 rgba(0,0,0,.1)}
+.dates-pill{display:inline-block;background:white;color:#ff6b9d;font-family:'Baloo 2',cursive;font-size:14px;font-weight:700;padding:8px 22px;border-radius:50px;box-shadow:0 4px 15px rgba(0,0,0,.12)}
+
+/* ── COUNTDOWN ── */
+.countdown-box{background:linear-gradient(135deg,#ff6b9d,#ff9a5c);border-radius:24px;padding:28px 24px;text-align:center;margin:28px auto;max-width:860px;color:white}
+.countdown-box h3{font-family:'Baloo 2',cursive;font-size:20px;font-weight:800;margin-bottom:16px}
+.countdown-nums{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.count-unit{background:rgba(255,255,255,.2);border-radius:16px;padding:14px 20px;min-width:76px}
+.count-num{font-family:'Baloo 2',cursive;font-size:38px;font-weight:800;line-height:1;display:block}
+.count-label{font-size:11px;font-weight:700;opacity:.85;text-transform:uppercase;letter-spacing:1px}
+
+/* ── SECTION HEADERS ── */
+.sec-hdr{border-radius:20px;padding:22px 28px;margin:0 20px 20px;position:relative;overflow:hidden;max-width:860px;margin-left:auto;margin-right:auto}
+.sec-hdr.caribe{background:linear-gradient(135deg,#06d6a0,#0096c7);color:white}
+.sec-hdr.fortuna{background:linear-gradient(135deg,#f77f00,#d62828);color:white}
+.sec-hdr.pacifico{background:linear-gradient(135deg,#f7971e,#ffd200);color:#3d2000}
+.sec-hdr.sanjose{background:linear-gradient(135deg,#7b2d8b,#c2185b);color:white}
+.sec-hdr h2{font-family:'Baloo 2',cursive;font-size:clamp(22px,5vw,36px);font-weight:800;line-height:1;margin-bottom:4px}
+.sec-hdr .tag{font-size:14px;font-weight:600;opacity:.88}
+.sec-big-emoji{position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:60px;opacity:.25}
+
+/* ── CARDS ── */
+.days-wrap{padding:0 20px;max-width:900px;margin:0 auto 36px}
+.lodge-banner{border-radius:16px;padding:14px 18px;margin-bottom:16px;font-size:13px;font-family:'Nunito',sans-serif;font-weight:700}
+.lb-caribe{background:rgba(6,214,160,.08);border:2px solid rgba(6,214,160,.25);color:#044a38}
+.lb-fortuna{background:rgba(247,151,30,.08);border:2px solid rgba(247,151,30,.3);color:#5a3000}
+.days-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-bottom:8px}
+.dc{border-radius:20px;padding:18px;box-shadow:0 4px 18px rgba(0,0,0,.07);transition:transform .2s,box-shadow .2s}
+.dc:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,0,0,.12)}
+.dc.c1{background:#fff0f8;border:2.5px solid #ffb3d9}
+.dc.c2{background:#f0fff8;border:2.5px solid #b3ffd9}
+.dc.c3{background:#f0f8ff;border:2.5px solid #b3d9ff}
+.dc.c4{background:#fffbf0;border:2.5px solid #ffd9b3}
+.dc.c5{background:#f8f0ff;border:2.5px solid #d9b3ff}
+.dc.c6{background:#fff5f0;border:2.5px solid #ffccb3}
+.dc.special{background:linear-gradient(135deg,#fff9c4,#ffe082);border:2.5px solid #ffc107;box-shadow:0 4px 20px rgba(255,193,7,.3)}
+.dc-emoji{font-size:34px;margin-bottom:7px;display:block}
+.dc-title{font-family:'Baloo 2',cursive;font-size:17px;font-weight:800;color:#2d2d2d;margin-bottom:5px;line-height:1.2}
+.dc-desc{font-size:12.5px;color:#666;line-height:1.5}
+.dc-tip{margin-top:10px;background:rgba(0,0,0,.05);border-radius:10px;padding:8px 10px;font-size:11.5px;color:#444;font-weight:700}
+.dc-tip::before{content:'💡 '}
+.dc-acts{margin-top:9px;display:flex;flex-wrap:wrap;gap:5px}
+.ap{background:rgba(0,0,0,.06);border-radius:20px;font-size:11px;font-weight:700;padding:3px 9px;color:#444}
+.dp{background:rgba(26,107,138,.1);border-radius:20px;font-size:11px;font-weight:700;padding:3px 9px;color:#1a6b8a}
+
+/* ── PACÍFICO OPTIONS ── */
+.pac-wrap{max-width:900px;margin:0 auto 36px;padding:0 20px}
+.pac-notice{background:rgba(247,151,30,.06);border:2px dashed rgba(247,151,30,.4);border-radius:16px;padding:16px 18px;margin-bottom:20px;text-align:center}
+.pac-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:8px}
+.pac-card{background:white;border-radius:20px;padding:20px;box-shadow:0 4px 18px rgba(0,0,0,.07)}
+.pac-card.nicoya{border:2.5px solid #b3d9ff}
+.pac-card.manuel{border:2.5px solid #b3ffd9}
+.pac-card-emoji{font-size:36px;text-align:center;margin-bottom:8px}
+.pac-card-title{font-family:'Baloo 2',cursive;font-size:16px;font-weight:800;color:#1a3a2a;margin-bottom:8px;text-align:center}
+.pac-card-desc{font-size:12.5px;color:#444;line-height:1.6;margin-bottom:10px}
+.pac-pill{font-size:11.5px;border-radius:8px;padding:4px 8px;font-weight:700;margin-bottom:4px;display:block}
+.pp-blue{background:#e3f2fd;color:#0d47a1}
+.pp-green{background:#e8f5e9;color:#1b5e20}
+.pac-footer{background:linear-gradient(135deg,#ffd166,#ff9a5c);border-radius:16px;padding:16px 20px;text-align:center;color:white;margin-top:8px}
+
+/* ── MAP ── */
+.map-section{max-width:900px;margin:0 auto 36px;padding:0 20px}
+.map-header{background:linear-gradient(135deg,#1a3a2a,#2d6a4f);border-radius:20px 20px 0 0;padding:18px 24px;color:white}
+.map-header h3{font-family:'Baloo 2',cursive;font-size:22px;font-weight:800;margin-bottom:4px}
+.map-header p{font-size:13px;opacity:.85}
+.map-container{background:#e8f4f0;border-radius:0 0 20px 20px;padding:16px;overflow:hidden}
+.map-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.map-link-btn{display:inline-block;background:#1a3a2a;color:white;font-family:'Baloo 2',cursive;font-size:13px;font-weight:700;padding:10px 20px;border-radius:30px;text-decoration:none;transition:background .2s}
+.map-link-btn:hover{background:#2d6a4f}
+.map-link-btn.gm{background:#1a6b8a}
+.map-link-btn.gm:hover{background:#155a75}
+
+/* ── TRIVIA ── */
+.trivia-section{max-width:860px;margin:0 auto 48px;padding:0 20px}
+.trivia-header{background:linear-gradient(135deg,#667eea,#764ba2);border-radius:24px 24px 0 0;padding:28px 24px;text-align:center;color:white}
+.trivia-header h3{font-family:'Baloo 2',cursive;font-size:26px;font-weight:800;margin-bottom:6px}
+.trivia-header p{font-size:14px;opacity:.9}
+.trivia-score-bar{background:rgba(255,255,255,.15);border-radius:0;padding:12px 24px;display:flex;justify-content:space-between;align-items:center;color:white;font-family:'Baloo 2',cursive;font-size:14px;font-weight:700}
+.trivia-body{background:white;border-radius:0 0 24px 24px;padding:0 0 8px;box-shadow:0 8px 32px rgba(102,126,234,.15)}
+.tq{padding:20px 24px;border-bottom:1px solid #f0f0f0}
+.tq:last-child{border-bottom:none}
+.tq-num{font-family:'Baloo 2',cursive;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#999;margin-bottom:6px}
+.tq-text{font-family:'Baloo 2',cursive;font-size:16px;font-weight:800;color:#2d2d2d;margin-bottom:12px;line-height:1.3}
+.tq-opts{display:flex;flex-direction:column;gap:6px}
+.tq-opt{background:#f5f5f5;border:2px solid transparent;border-radius:12px;padding:10px 14px;font-size:13px;font-weight:700;cursor:pointer;text-align:left;transition:all .2s;color:#333}
+.tq-opt:hover{background:#e8f0fe;border-color:#667eea}
+.tq-opt.correct{background:#d4edda;border-color:#2d9e6b;color:#1a5c30}
+.tq-opt.wrong{background:#ffe0d0;border-color:#e07b54;color:#7a2500}
+.tq-opt.reveal{background:#d4edda;border-color:#2d9e6b;color:#1a5c30}
+.tq-opt:disabled{cursor:default}
+.tq-fact{display:none;margin-top:10px;background:linear-gradient(135deg,rgba(102,126,234,.08),rgba(118,75,162,.08));border-radius:12px;padding:12px 14px;font-size:12.5px;color:#444;line-height:1.6;border-left:3px solid #667eea}
+.tq-fact.show{display:block}
+.trivia-result{display:none;padding:32px 24px;text-align:center}
+.trivia-result.show{display:block}
+.result-emoji{font-size:64px;margin-bottom:12px}
+.result-title{font-family:'Baloo 2',cursive;font-size:28px;font-weight:800;color:#2d2d2d;margin-bottom:8px}
+.result-sub{font-size:14px;color:#666;margin-bottom:20px}
+.restart-btn{background:linear-gradient(135deg,#667eea,#764ba2);color:white;border:none;border-radius:30px;padding:14px 32px;font-family:'Baloo 2',cursive;font-size:16px;font-weight:700;cursor:pointer}
+
+/* ── RESPONSIVE ── */
+@media(max-width:600px){
+  .pac-grid{grid-template-columns:1fr}
+  .hero{padding:36px 16px 48px}
+  .days-wrap,.pac-wrap,.trivia-section,.map-section{padding:0 12px}
+  .sec-hdr{margin-left:12px;margin-right:12px}
+  .countdown-box{margin:20px 12px}
+  .clima-section,.mochila-section,.animales-section,.tico-section{padding:0 12px}
+  .animales-grid{grid-template-columns:repeat(3,1fr)!important}
+}
+
+/* ── SECTION WRAPPER ── */
+.new-section{max-width:860px;margin:0 auto 40px;padding:0 20px}
+.ns-header{border-radius:20px 20px 0 0;padding:22px 28px;color:white;display:flex;align-items:center;gap:14px}
+.ns-header.verde{background:linear-gradient(135deg,#2d8a4f,#4caf72)}
+.ns-header.azul{background:linear-gradient(135deg,#1a6b8a,#2196c4)}
+.ns-header.morado{background:linear-gradient(135deg,#764ba2,#a855d4)}
+.ns-header.rojo{background:linear-gradient(135deg,#d62828,#f77f00)}
+.ns-icon{font-size:36px}
+.ns-title{font-family:'Baloo 2',cursive;font-size:22px;font-weight:800;margin-bottom:2px}
+.ns-sub{font-size:13px;opacity:.88}
+.ns-body{background:white;border-radius:0 0 20px 20px;padding:24px;box-shadow:0 6px 24px rgba(0,0,0,.08)}
+
+/* ── CLIMA ── */
+.clima-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-bottom:16px}
+.clima-btn{background:linear-gradient(135deg,#1a6b8a,#2196c4);color:white;border:none;border-radius:14px;padding:14px;cursor:pointer;transition:transform .15s,box-shadow .15s;text-align:center;width:100%}
+.clima-btn:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(26,107,138,.35)}
+.clima-btn .cb-emoji{font-size:28px;display:block;margin-bottom:6px}
+.clima-btn .cb-name{font-family:'Baloo 2',cursive;font-size:14px;font-weight:800}
+.clima-btn .cb-loc{font-size:11px;opacity:.8}
+.clima-result{background:linear-gradient(135deg,#e8f4f8,#f0f8ff);border-radius:16px;padding:20px 24px;display:none;align-items:center;gap:20px;flex-wrap:wrap}
+.clima-result.show{display:flex}
+.clima-big-icon{font-size:56px;line-height:1}
+.clima-info .ci-city{font-family:'Baloo 2',cursive;font-size:18px;font-weight:800;color:#1a3a2a}
+.clima-info .ci-temp{font-family:'Baloo 2',cursive;font-size:42px;font-weight:800;color:#1a6b8a;line-height:1}
+.clima-info .ci-desc{font-size:13px;color:#666;margin-top:4px;text-transform:capitalize}
+.clima-info .ci-extra{font-size:12px;color:#888;margin-top:6px}
+.clima-error{color:#c0392b;font-size:13px;padding:12px;background:#ffe0d0;border-radius:10px;margin-top:8px;display:none}
+.clima-error.show{display:block}
+.clima-loading{font-family:'Baloo 2',cursive;font-size:14px;color:#1a6b8a;padding:16px;text-align:center;display:none}
+.clima-loading.show{display:block}
+
+/* ── MOCHILA ── */
+.mochila-progress{background:#f0f0f0;border-radius:20px;height:14px;margin-bottom:6px;overflow:hidden}
+.mochila-bar{height:100%;border-radius:20px;background:linear-gradient(90deg,#06d6a0,#2196c4);transition:width .5s ease;width:0%}
+.mochila-pct{font-family:'Baloo 2',cursive;font-size:13px;color:#666;margin-bottom:16px;text-align:right}
+.mochila-cats{display:flex;flex-direction:column;gap:16px}
+.mochila-cat h4{font-family:'Baloo 2',cursive;font-size:15px;font-weight:800;color:#2d2d2d;margin-bottom:8px;padding-bottom:4px;border-bottom:2px solid #f0f0f0}
+.mochila-items{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:6px}
+.mochila-item{display:flex;align-items:center;gap:8px;background:#f9f9f9;border-radius:10px;padding:8px 12px;cursor:pointer;transition:all .2s;border:2px solid transparent;font-size:13px;font-weight:600;color:#444;user-select:none}
+.mochila-item:hover{background:#e8f8f0;border-color:#06d6a0}
+.mochila-item.checked{background:#d4edda;border-color:#2d9e6b;color:#1a5c30;text-decoration:none}
+.mochila-item.checked .mi-emoji{filter:none}
+.mi-box{width:18px;height:18px;border-radius:4px;border:2px solid #ccc;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;transition:all .2s}
+.mochila-item.checked .mi-box{background:#2d9e6b;border-color:#2d9e6b;color:white}
+.mi-emoji{font-size:16px}
+.mochila-confetti{display:none;text-align:center;padding:20px;font-family:'Baloo 2',cursive;font-size:18px;font-weight:800;color:#2d9e6b;background:linear-gradient(135deg,#d4edda,#a8f0c6);border-radius:16px;margin-top:16px}
+.mochila-confetti.show{display:block}
+
+/* ── ANIMALES ── */
+.animales-intro{font-size:13px;color:#666;margin-bottom:16px;line-height:1.6}
+.animales-progress{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.animales-bar-wrap{flex:1;background:#f0f0f0;border-radius:20px;height:12px;overflow:hidden}
+.animales-bar{height:100%;border-radius:20px;background:linear-gradient(90deg,#f77f00,#ffd166);transition:width .4s ease;width:0%}
+.animales-count{font-family:'Baloo 2',cursive;font-size:14px;font-weight:800;color:#f77f00;white-space:nowrap}
+.animales-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
+.animal-card{border-radius:16px;border:2.5px solid #f0f0f0;background:#fafafa;padding:12px 8px;text-align:center;cursor:pointer;transition:all .2s;position:relative;user-select:none}
+.animal-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.1);border-color:#f77f00}
+.animal-card.spotted{background:linear-gradient(135deg,#fff9c4,#ffe082);border-color:#ffc107;box-shadow:0 4px 16px rgba(255,193,7,.3)}
+.animal-card.spotted::after{content:'✅';position:absolute;top:6px;right:8px;font-size:14px}
+.animal-emoji{font-size:36px;margin-bottom:6px;display:block;transition:transform .2s}
+.animal-card:hover .animal-emoji{transform:scale(1.15)}
+.animal-card.spotted .animal-emoji{filter:drop-shadow(0 0 8px rgba(255,193,7,.8))}
+.animal-name{font-family:'Baloo 2',cursive;font-size:11px;font-weight:800;color:#333;line-height:1.2}
+.animal-name-es{font-size:10px;color:#888;margin-top:2px}
+.animal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:999;align-items:center;justify-content:center;padding:20px}
+.animal-overlay.show{display:flex}
+.animal-popup{background:white;border-radius:24px;padding:32px 28px;max-width:340px;width:100%;text-align:center;position:relative}
+.ap-close{position:absolute;top:12px;right:16px;font-size:22px;cursor:pointer;color:#999;border:none;background:none;font-weight:700}
+.ap-emoji{font-size:72px;margin-bottom:12px;display:block}
+.ap-name{font-family:'Baloo 2',cursive;font-size:22px;font-weight:800;color:#2d2d2d;margin-bottom:4px}
+.ap-fact{font-size:13px;color:#666;line-height:1.6;margin-bottom:16px}
+.ap-btn{background:linear-gradient(135deg,#f77f00,#ffd166);color:#3d2000;border:none;border-radius:30px;padding:12px 28px;font-family:'Baloo 2',cursive;font-size:15px;font-weight:800;cursor:pointer;transition:transform .15s}
+.ap-btn:hover{transform:scale(1.05)}
+.ap-btn.unspot{background:linear-gradient(135deg,#ccc,#eee);color:#666}
+
+/* ── TICO WORDS ── */
+.tico-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.tico-card{border-radius:16px;padding:16px;cursor:pointer;border:2.5px solid transparent;transition:all .2s;position:relative;overflow:hidden}
+.tico-card.tc1{background:#fff0f8;border-color:#ffb3d9}
+.tico-card.tc2{background:#f0fff8;border-color:#b3ffd9}
+.tico-card.tc3{background:#f0f8ff;border-color:#b3d9ff}
+.tico-card.tc4{background:#fffbf0;border-color:#ffd9b3}
+.tico-card.tc5{background:#f8f0ff;border-color:#d9b3ff}
+.tico-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08)}
+.tico-word{font-family:'Baloo 2',cursive;font-size:20px;font-weight:800;color:#2d2d2d;margin-bottom:4px}
+.tico-phonetic{font-size:11px;color:#999;font-style:italic;margin-bottom:8px}
+.tico-reveal{display:none;font-size:13px;color:#444;line-height:1.5;background:rgba(255,255,255,.7);border-radius:10px;padding:8px 10px;margin-top:6px}
+.tico-reveal.show{display:block}
+.tico-tap{font-size:10px;color:#bbb;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.tico-star{position:absolute;top:10px;right:12px;font-size:18px;opacity:.5}
+
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="floating-emojis">
+    <span class="fe">🦥</span><span class="fe">🐠</span><span class="fe">🌋</span>
+    <span class="fe">🐢</span><span class="fe">🐒</span><span class="fe">🦜</span><span class="fe">🌺</span>
+  </div>
+  <div class="hero-inner">
+    <h1>¡Costa Rica nos espera! 🎉</h1>
+    <p class="sub">Playas, volcanes, selvas y animales increíbles 🇨🇷</p>
+    <span class="dates-pill">📅 24 de Junio al 5 de Julio 2026</span>
+  </div>
+</div>
+
+<!-- COUNTDOWN -->
+<div class="countdown-box">
+  <h3>⏳ ¿Cuánto falta para el viaje?</h3>
+  <div class="countdown-nums">
+    <div class="count-unit"><span class="count-num" id="cnt-days">--</span><span class="count-label">días</span></div>
+    <div class="count-unit"><span class="count-num" id="cnt-hours">--</span><span class="count-label">horas</span></div>
+    <div class="count-unit"><span class="count-num" id="cnt-mins">--</span><span class="count-label">minutos</span></div>
+  </div>
+</div>
+
+<!-- BLOQUE 1: CARIBE SUR -->
+<div class="sec-hdr caribe"><div class="sec-big-emoji">🐢</div><h2>🌊 Bloque 1 — Caribe Sur</h2><p class="tag">La costa del Caribe — tortugas, selva y mar turquesa • En auto 🚗 • ~4 días</p></div>
+<div class="days-wrap">
+  <div class="lodge-banner lb-caribe">🏠 Nos alojamos en <strong>Shawandha Lodge</strong> — un lodge rodeado de selva tropical, cerca de Puerto Viejo. ¡Con animales en el jardín y el mar a pocos minutos!</div>
+  <div class="days-grid">
+    <div class="dc c3"><span class="dc-emoji">🛬</span><div class="dc-title">¡Llegamos a Costa Rica!</div><div class="dc-desc">Aterrizamos en San José y arrancamos en auto hacia el Caribe Sur. En el camino cruzamos la Cordillera Central — ¡busquen nubes entre las montañas!</div><div class="dc-tip">El Caribe costarricense tiene arena oscura volcánica y el agua es más cálida que el Pacífico.</div><div class="dc-acts"><span class="dp">🚗 ~4hs de auto</span><span class="ap">🌿 Selva tropical</span><span class="ap">🏖️ Primera playa caribeña</span></div></div>
+    <div class="dc c2"><span class="dc-emoji">🏖️</span><div class="dc-title">Playas del Caribe</div><div class="dc-desc">Playa Chiquita — playa salvaje sin turistas donde se ve el arrecife desde la orilla. ¡Traigan snorkel y busquen cangrejos!</div><div class="dc-tip">En el Caribe se puede hacer snorkel directo desde la playa. ¡Los peces de colores se acercan mucho!</div><div class="dc-acts"><span class="ap">🤿 Snorkel en arrecife</span><span class="ap">🌊 Mar Caribe</span><span class="ap">🦀 Cangrejos</span></div></div>
+    <div class="dc c5"><span class="dc-emoji">🐬</span><div class="dc-title">Manzanillo y los delfines</div><div class="dc-desc">Un pueblo al final del camino, rodeado de reserva natural. Monos, loros, tucanes y delfines que nadan muy cerca de la orilla.</div><div class="dc-tip">Lleguen temprano para ver los delfines — suelen aparecer de mañana cerca de la orilla.</div><div class="dc-acts"><span class="dp">🚗 ~20min</span><span class="ap">🐬 Delfines</span><span class="ap">🌴 Reserva Natural</span><span class="ap">🦜 Tucanes</span></div></div>
+    <div class="dc c4"><span class="dc-emoji">🐆</span><div class="dc-title">Parque Nacional Cahuita</div><div class="dc-desc">Uno de los arrecifes de coral más bonitos de Costa Rica. Los monos cariblancos y los perezosos duermen en los árboles del sendero. ¡Entrada libre!</div><div class="dc-tip">En Cahuita los monos se acercan mucho. ¡No les den comida o se enojan! 🙈</div><div class="dc-acts"><span class="dp">🚗 ~40min</span><span class="ap">🦥 Perezosos</span><span class="ap">🐠 Snorkel</span><span class="ap">🐒 Monos</span></div></div>
+  </div>
+</div>
+
+<!-- BLOQUE 2: LA FORTUNA -->
+<div class="sec-hdr fortuna"><div class="sec-big-emoji">🌋</div><h2>🌋 Bloque 2 — La Fortuna & Arenal</h2><p class="tag">El volcán más famoso de Costa Rica y aguas mágicas • En auto 🚗 • ~3 días</p></div>
+<div class="days-wrap">
+  <div class="lodge-banner lb-fortuna">🏠 Nos alojamos en <strong>Villa Sapiens Arenal</strong> — ¡villa con piscina propia y jardín con tucanes y colibríes! 🌋 Con vista al Volcán Arenal. ¡Y llega el pelado! 🎉</div>
+  <div class="days-grid">
+    <div class="dc special"><span class="dc-emoji">🎉</span><div class="dc-title">¡¡Llega el pelado!!</div><div class="dc-desc">Él llega desde Honduras en bus y nos juntamos todos en La Fortuna. ¡Por fin el grupo completo! La villa tiene piscina propia — primera tarde tirándose al agua con vista al volcán.</div><div class="dc-tip">El Volcán Arenal mide 1.670 metros. Si el cielo está despejado de noche, ¡lo ven con las estrellas encima!</div><div class="dc-acts"><span class="ap">🌋 Volcán Arenal</span><span class="ap">🏊 Piscina propia</span><span class="ap">🎊 ¡Grupo completo!</span></div></div>
+    <div class="dc c5"><span class="dc-emoji">🩵</span><div class="dc-title">Río Celeste — el río mágico</div><div class="dc-desc">Un río de color azul eléctrico ÚNICO en el mundo. El color viene de una reacción química entre minerales volcánicos. ¡Parece de película de fantasía!</div><div class="dc-tip">El río se llama "Celeste" porque ese azul clarísimo se llama celeste en español. ¡Es exactamente ese color!</div><div class="dc-acts"><span class="dp">🚗 ~2hs de auto</span><span class="ap">🥾 Caminata en selva</span><span class="ap">📸 Mejores fotos</span></div></div>
+    <div class="dc c4"><span class="dc-emoji">💧</span><div class="dc-title">Catarata + Aguas Termales</div><div class="dc-desc">Primero una cascada de 70 metros con piscina natural al pie. Después las termales Baldi — piscinas calentísimas calentadas por el volcán con vista al Arenal.</div><div class="dc-tip">El agua de las termales viene del interior del volcán y llega a ¡40 grados! Como una bañadera gigante natural.</div><div class="dc-acts"><span class="ap">💧 Cascada 70m</span><span class="ap">♨️ Termales Baldi</span><span class="ap">🏊 Piscinas</span></div></div>
+  </div>
+</div>
+
+<!-- BLOQUE 3: PACÍFICO -->
+<div class="sec-hdr pacifico"><div class="sec-big-emoji">🌊</div><h2>🌅 Bloque 3 — El Pacífico</h2><p class="tag">Playas del Pacífico costarricense — ¡aún elegimos el destino exacto! • ~3 días</p></div>
+<div class="pac-wrap">
+  <div class="pac-notice"><div style="font-family:'Baloo 2',cursive;font-size:17px;font-weight:800;color:#5a3000;margin-bottom:4px">🗺️ ¡Todavía estamos eligiendo!</div><div style="font-size:13px;color:#7a5c00;line-height:1.6">Tenemos dos opciones hermosas. Las dos tienen playa, animales y naturaleza increíble.<br>¡Lo decidimos durante el viaje según cómo venga el grupo!</div></div>
+  <div class="pac-grid">
+    <div class="pac-card nicoya"><div class="pac-card-emoji">🏝️</div><div class="pac-card-title">Opción A<br>Península de Nicoya</div><div class="pac-card-desc">Montezuma y Cabuya — playas salvajes, cascada con piscina natural y Reserva Cabo Blanco. ¡Llegamos cruzando el mar en ferry con el auto adentro!</div><span class="pac-pill pp-blue">🚢 Ferry — ¡cruzamos el golfo!</span><span class="pac-pill pp-blue">🐠 Snorkel en Isla Tortuga</span><span class="pac-pill pp-blue">💧 Cascada con piscina natural</span><span class="pac-pill pp-blue">🌿 Playa salvaje sin turistas</span></div>
+    <div class="pac-card manuel"><div class="pac-card-emoji">🐒</div><div class="pac-card-title">Opción B<br>Manuel Antonio + Uvita</div><div class="pac-card-desc">Parque Nacional con monos y perezosos garantizados, playas de postal y Uvita donde vienen las ballenas jorobadas en julio.</div><span class="pac-pill pp-green">🦥 Perezosos y monos sí o sí</span><span class="pac-pill pp-green">🐋 ¡Posibles ballenas jorobadas!</span><span class="pac-pill pp-green">🏖️ Playas de agua calma</span><span class="pac-pill pp-green">🚗 Viaje más directo sin ferry</span></div>
+  </div>
+  <div class="pac-footer"><div style="font-family:'Baloo 2',cursive;font-size:16px;font-weight:800;margin-bottom:4px">🌟 Las dos opciones son increíbles</div><div style="font-size:13px;opacity:.95">No importa a cuál vayamos — van a ver animales salvajes, playa y naturaleza pura. ¡Lo que importa es que estamos juntos!</div></div>
+</div>
+
+<!-- FINAL: SAN JOSÉ -->
+<div class="sec-hdr sanjose"><div class="sec-big-emoji">✈️</div><h2>🏙️ Final — San José</h2><p class="tag">Última noche en la capital antes de volar a casa 🥰</p></div>
+<div class="days-wrap">
+  <div class="days-grid">
+    <div class="dc c2"><span class="dc-emoji">🏙️</span><div class="dc-title">San José — última noche</div><div class="dc-desc">La última noche del viaje en la capital antes de volar a casa. Cena especial de despedida de Costa Rica. ¡Van a querer quedarse más! 🥲</div><div class="dc-tip">San José está a 1.170 metros de altura. ¡Por eso hace fresquito aunque estemos en Centroamérica!</div><div class="dc-acts"><span class="ap">🏙️ Ciudad capital</span><span class="ap">🍽️ Cena especial</span><span class="ap">🌃 Noche en SJO</span></div></div>
+    <div class="dc c4"><span class="dc-emoji">✈️</span><div class="dc-title">Vuelo a casa 🥰</div><div class="dc-desc">Con la mochila llena de recuerdos, fotos y millones de historias increíbles. ¡Costa Rica para siempre en el corazón!</div><div class="dc-tip">En Costa Rica dicen "Pura Vida" para todo — saludar, despedirse y dar las gracias. ¡Ya van a usarlo todo el viaje!</div><div class="dc-acts"><span class="ap">✈️ Vuelo de regreso</span><span class="ap">🏠 A casa</span><span class="ap">🥰 Mil recuerdos</span></div></div>
+  </div>
+</div>
+
+<!-- MAPA -->
+<div class="map-section">
+  <div class="map-header">
+    <h3>🗺️ Nuestra ruta en Costa Rica</h3>
+    <p>Casi 950km recorriendo los dos océanos — ¡Caribe y Pacífico en el mismo viaje!</p>
+  </div>
+  <div class="map-container">
+    <svg viewBox="0 0 700 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:100%;border-radius:12px;display:block;background:#1a7ab8">
+
+      <!-- ═══ OCEAN GRADIENTS ═══ -->
+      <defs>
+        <linearGradient id="pacGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#0d5a8a;stop-opacity:1"/>
+          <stop offset="100%" style="stop-color:#1a7ab8;stop-opacity:1"/>
+        </linearGradient>
+        <linearGradient id="carGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#1a7ab8;stop-opacity:1"/>
+          <stop offset="100%" style="stop-color:#2196c4;stop-opacity:1"/>
+        </linearGradient>
+        <linearGradient id="crGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#2d8a4f;stop-opacity:1"/>
+          <stop offset="100%" style="stop-color:#4caf72;stop-opacity:1"/>
+        </linearGradient>
+        <linearGradient id="neighbGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#7ab87a;stop-opacity:1"/>
+          <stop offset="100%" style="stop-color:#8ec98e;stop-opacity:1"/>
+        </linearGradient>
+        <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="2" dy="3" stdDeviation="3" flood-color="rgba(0,0,0,0.3)"/>
+        </filter>
+        <filter id="pinShadow">
+          <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="rgba(0,0,0,0.4)"/>
+        </filter>
+      </defs>
+
+      <!-- ═══ OCEAN BASE ═══ -->
+      <!-- Pacific -->
+      <rect width="700" height="480" fill="url(#pacGrad)"/>
+      <!-- Caribbean (right side) -->
+      <rect x="420" y="0" width="280" height="480" fill="url(#carGrad)" opacity="0.6"/>
+
+      <!-- ═══ OCEAN LABELS ═══ -->
+      <text x="60" y="280" font-family="Georgia,serif" font-size="13" fill="rgba(255,255,255,0.45)" font-style="italic" font-weight="bold" transform="rotate(-25,60,280)">OCÉANO</text>
+      <text x="40" y="300" font-family="Georgia,serif" font-size="13" fill="rgba(255,255,255,0.45)" font-style="italic" font-weight="bold" transform="rotate(-25,40,300)">PACÍFICO</text>
+      <text x="570" y="120" font-family="Georgia,serif" font-size="13" fill="rgba(255,255,255,0.45)" font-style="italic" font-weight="bold">MAR</text>
+      <text x="555" y="138" font-family="Georgia,serif" font-size="13" fill="rgba(255,255,255,0.45)" font-style="italic" font-weight="bold">CARIBE</text>
+
+      <!-- ═══ NICARAGUA — northern neighbor ═══ -->
+      <path d="
+        M 145,18 L 210,15 L 280,18 L 340,22 L 390,28 L 430,35 L 455,42 L 462,52
+        L 458,62 L 450,68 L 440,72 L 420,75 L 400,78 L 375,76 L 350,72
+        L 320,70 L 295,74 L 270,80 L 248,88 L 230,95 L 215,98 L 198,95
+        L 180,88 L 165,80 L 152,70 L 142,58 L 138,45 L 140,32 Z
+      " fill="url(#neighbGrad)" stroke="#5a9a5a" stroke-width="1" filter="url(#shadow)"/>
+      <text x="295" y="58" font-family="Arial" font-size="12" fill="white" font-weight="bold" text-anchor="middle" opacity="0.9">NICARAGUA</text>
+
+      <!-- Lake Nicaragua -->
+      <ellipse cx="320" cy="68" rx="22" ry="12" fill="#1a7ab8" opacity="0.7"/>
+
+      <!-- ═══ COSTA RICA — accurate outline ═══ -->
+      <!-- Based on real geography:
+           NW: Guanacaste Peninsula jutting into Pacific
+           Central: Cordillera splitting the country
+           Caribbean coast: relatively straight NE to SE
+           Pacific coast: irregular with Peninsula de Osa in south
+           SE tip: connects to Panama -->
+      <path d="
+        M 198,95
+        L 215,98 L 230,95
+        C 240,93 252,90 265,88
+        C 280,85 298,83 315,82
+        C 332,81 348,82 362,85
+        C 378,88 392,93 405,98
+        C 415,103 422,110 425,118
+        C 428,128 424,138 418,146
+        C 412,154 404,160 398,168
+        C 392,176 388,185 390,195
+        C 392,205 400,214 406,224
+        C 412,234 415,245 412,256
+        C 409,267 402,276 394,284
+        C 386,292 377,298 368,304
+        C 358,310 348,315 338,318
+        C 328,321 318,322 308,320
+        C 298,318 290,313 283,307
+        C 276,301 271,293 265,286
+        C 259,279 253,272 246,266
+        C 239,260 232,255 225,250
+        C 218,245 212,239 207,233
+        C 202,227 198,220 195,213
+        C 192,206 190,199 188,192
+        C 186,185 185,178 183,171
+        C 181,164 178,157 175,150
+        C 172,143 168,136 164,130
+        C 160,124 156,118 153,112
+        C 150,106 148,100 147,94
+        C 146,88 147,82 149,77
+        L 152,70 L 165,80 L 180,88 Z
+      " fill="url(#crGrad)" stroke="#1e6b38" stroke-width="1.5" filter="url(#shadow)"/>
+
+      <!-- Guanacaste Peninsula (NW bulge into Pacific) -->
+      <path d="
+        M 175,120 C 165,118 155,115 147,110
+        C 138,105 130,98 125,92
+        C 120,86 118,79 122,74
+        C 126,69 134,66 142,67
+        C 148,68 152,70 152,70
+        L 149,77 C 147,82 146,88 147,94
+        C 148,100 150,106 153,112
+        C 156,118 160,124 164,130
+        C 168,136 172,143 175,150
+        Z
+      " fill="url(#crGrad)" stroke="#1e6b38" stroke-width="1.5"/>
+
+      <!-- Peninsula de Osa (SW) -->
+      <path d="
+        M 215,290 C 210,295 205,302 200,308
+        C 196,314 193,320 196,326
+        C 199,332 207,335 215,333
+        C 223,331 229,325 232,319
+        C 235,313 234,306 230,300
+        C 226,294 220,290 215,290 Z
+      " fill="url(#crGrad)" stroke="#1e6b38" stroke-width="1.5"/>
+
+      <!-- Cordillera / mountain ridge hint -->
+      <path d="M 260,90 C 265,110 270,135 272,160 C 274,185 272,210 268,235 C 265,255 260,272 255,285"
+            stroke="#1e6b38" stroke-width="2" fill="none" opacity="0.35" stroke-dasharray="4,3"/>
+
+      <!-- ═══ PANAMA — southern neighbor ═══ -->
+      <path d="
+        M 308,320 C 318,322 328,321 338,318
+        C 348,315 358,310 368,304
+        C 378,298 386,292 394,284
+        C 402,276 409,267 412,256
+        C 415,247 416,242 420,240
+        C 428,238 440,240 455,242
+        C 470,244 485,248 495,255
+        C 505,262 510,272 505,282
+        C 500,292 488,298 476,304
+        C 464,310 450,315 436,318
+        C 422,321 408,323 394,326
+        C 380,329 366,333 352,338
+        C 338,343 324,350 310,355
+        C 296,360 283,363 275,360
+        C 267,357 263,350 262,343
+        C 261,336 264,330 268,325
+        C 273,319 280,315 286,312
+        C 292,309 300,308 308,320 Z
+      " fill="url(#neighbGrad)" stroke="#5a9a5a" stroke-width="1" filter="url(#shadow)"/>
+      <text x="420" y="295" font-family="Arial" font-size="12" fill="white" font-weight="bold" opacity="0.9">PANAMÁ</text>
+
+      <!-- ═══ GOLFO DE NICOYA (for ferry) ═══ -->
+      <path d="M 153,190 C 148,195 143,202 140,210 C 137,218 137,226 140,233
+               C 143,240 148,245 152,250 C 156,245 162,240 165,233
+               C 168,226 167,218 164,210 C 161,202 157,195 153,190 Z"
+            fill="#1a7ab8" opacity="0.6" stroke="#0d5a8a" stroke-width="1"/>
+      <text x="142" y="220" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.8)" font-style="italic" text-anchor="middle">Golfo</text>
+      <text x="142" y="230" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.8)" font-style="italic" text-anchor="middle">Nicoya</text>
+
+      <!-- ═══ COAST TEXTURE DOTS ═══ -->
+      <g opacity="0.12" fill="white">
+        <circle cx="100" cy="180" r="2"/><circle cx="108" cy="195" r="1.5"/>
+        <circle cx="95" cy="210" r="2"/><circle cx="105" cy="225" r="1.5"/>
+        <circle cx="620" cy="140" r="2"/><circle cx="610" cy="155" r="1.5"/>
+        <circle cx="625" cy="168" r="2"/><circle cx="615" cy="183" r="1.5"/>
+      </g>
+
+      <!-- ═══ BORDER NICARAGUA / CR ═══ -->
+      <path d="M 198,95 L 215,98 L 230,95 C 245,92 260,88 280,86 C 300,84 320,82 340,82 C 360,82 378,85 395,90 C 410,95 422,105 428,118"
+            stroke="#1e6b38" stroke-width="2" fill="none" stroke-dasharray="6,3" opacity="0.7"/>
+
+      <!-- ═══ ANIMATED ROUTE ═══ -->
+      <!-- Leg 1: SJO → Puerto Viejo (Caribe) — pink -->
+      <path d="M 282,188 C 300,182 320,170 345,158 C 368,147 390,136 412,124 C 428,115 440,108 450,102"
+            stroke="#ff6b9d" stroke-width="4" fill="none" stroke-dasharray="10,6" stroke-linecap="round">
+        <animate attributeName="stroke-dashoffset" from="300" to="0" dur="4s" repeatCount="indefinite"/>
+      </path>
+
+      <!-- Leg 2: Puerto Viejo → La Fortuna — orange -->
+      <path d="M 450,102 C 435,110 415,120 395,132 C 375,144 355,154 338,162 C 320,170 305,178 295,185 L 282,188"
+            stroke="#ff9a5c" stroke-width="4" fill="none" stroke-dasharray="10,6" stroke-linecap="round">
+        <animate attributeName="stroke-dashoffset" from="300" to="0" dur="4s" begin="1.5s" repeatCount="indefinite"/>
+      </path>
+
+      <!-- Leg 3: La Fortuna → Puntarenas — yellow -->
+      <path d="M 222,173 C 215,185 208,198 202,213 C 197,226 194,238 194,250"
+            stroke="#ffd166" stroke-width="4" fill="none" stroke-dasharray="10,6" stroke-linecap="round">
+        <animate attributeName="stroke-dashoffset" from="200" to="0" dur="4s" begin="3s" repeatCount="indefinite"/>
+      </path>
+
+      <!-- Ferry crossing (blue dashed) -->
+      <path d="M 194,250 C 183,252 172,253 163,255 C 154,257 147,260 143,265 C 148,268 156,268 165,270 C 174,272 182,276 188,282"
+            stroke="#64d4f4" stroke-width="3" fill="none" stroke-dasharray="6,4" opacity="0.9">
+        <animate attributeName="stroke-dashoffset" from="150" to="0" dur="3s" begin="4s" repeatCount="indefinite"/>
+      </path>
+
+      <!-- Leg 4: Montezuma → SJO — teal -->
+      <path d="M 188,282 C 200,278 215,272 232,266 C 248,260 263,255 274,248 C 282,242 285,235 283,225 C 281,215 278,205 280,196 L 282,188"
+            stroke="#06d6a0" stroke-width="4" fill="none" stroke-dasharray="10,6" stroke-linecap="round">
+        <animate attributeName="stroke-dashoffset" from="300" to="0" dur="4s" begin="5s" repeatCount="indefinite"/>
+      </path>
+
+      <!-- ═══ LOCATION PINS ═══ -->
+      <!-- SJO — San José (star shape, central) -->
+      <g filter="url(#pinShadow)">
+        <circle cx="282" cy="188" r="13" fill="#1a3a2a" stroke="white" stroke-width="2.5"/>
+        <text x="282" y="192" font-family="Arial" font-size="9" fill="white" font-weight="bold" text-anchor="middle">SJO</text>
+      </g>
+      <rect x="248" y="202" width="68" height="18" rx="5" fill="white" opacity="0.92"/>
+      <text x="282" y="215" font-family="Arial" font-size="10" fill="#1a3a2a" font-weight="bold" text-anchor="middle">San José ✈️</text>
+
+      <!-- 1 — Caribe Sur / Puerto Viejo -->
+      <g filter="url(#pinShadow)">
+        <circle cx="450" cy="102" r="13" fill="#06d6a0" stroke="white" stroke-width="2.5"/>
+        <text x="450" y="107" font-family="Arial" font-size="10" fill="white" font-weight="bold" text-anchor="middle">1</text>
+      </g>
+      <rect x="408" y="78" width="84" height="19" rx="5" fill="#06d6a0" opacity="0.92"/>
+      <text x="450" y="91" font-family="Arial" font-size="10" fill="white" font-weight="bold" text-anchor="middle">🌊 Caribe Sur</text>
+
+      <!-- 2 — La Fortuna -->
+      <g filter="url(#pinShadow)">
+        <circle cx="222" cy="173" r="13" fill="#f77f00" stroke="white" stroke-width="2.5"/>
+        <text x="222" y="178" font-family="Arial" font-size="10" fill="white" font-weight="bold" text-anchor="middle">2</text>
+      </g>
+      <rect x="172" y="150" width="90" height="19" rx="5" fill="#f77f00" opacity="0.92"/>
+      <text x="217" y="163" font-family="Arial" font-size="10" fill="white" font-weight="bold" text-anchor="middle">🌋 La Fortuna</text>
+
+      <!-- Puntarenas (ferry departure) -->
+      <g filter="url(#pinShadow)">
+        <circle cx="194" cy="250" r="8" fill="#1a6b8a" stroke="white" stroke-width="2"/>
+        <text x="194" y="254" font-family="Arial" font-size="7" fill="white" font-weight="bold" text-anchor="middle">⛴️</text>
+      </g>
+      <rect x="158" y="260" width="72" height="15" rx="4" fill="#1a6b8a" opacity="0.88"/>
+      <text x="194" y="271" font-family="Arial" font-size="9" fill="white" font-weight="bold" text-anchor="middle">Puntarenas</text>
+
+      <!-- 3 — Montezuma -->
+      <g filter="url(#pinShadow)">
+        <circle cx="188" cy="282" r="13" fill="#f7971e" stroke="white" stroke-width="2.5"/>
+        <text x="188" y="287" font-family="Arial" font-size="10" fill="white" font-weight="bold" text-anchor="middle">3</text>
+      </g>
+      <rect x="145" y="297" width="86" height="19" rx="5" fill="#f7971e" opacity="0.92"/>
+      <text x="188" y="310" font-family="Arial" font-size="10" fill="#3d2000" font-weight="bold" text-anchor="middle">🌅 Montezuma</text>
+
+      <!-- ═══ KM / TIME LABELS ═══ -->
+      <g font-family="Arial" font-size="9" font-weight="bold" fill="white" opacity="0.85">
+        <rect x="342" y="120" width="72" height="14" rx="3" fill="rgba(0,0,0,0.35)"/>
+        <text x="378" y="131" text-anchor="middle">277km · 4.5hs</text>
+        <rect x="237" y="155" width="72" height="14" rx="3" fill="rgba(0,0,0,0.35)"/>
+        <text x="273" y="166" text-anchor="middle">272km · 5hs</text>
+        <rect x="123" y="253" width="50" height="13" rx="3" fill="rgba(0,0,0,0.35)"/>
+        <text x="148" y="263" text-anchor="middle">ferry ⛴️</text>
+        <rect x="222" y="238" width="70" height="14" rx="3" fill="rgba(0,0,0,0.35)"/>
+        <text x="257" y="249" text-anchor="middle">226km · 4.5hs</text>
+      </g>
+
+      <!-- ═══ LEGEND ═══ -->
+      <rect x="512" y="350" width="178" height="122" rx="10" fill="rgba(0,0,0,0.55)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+      <text x="601" y="368" font-family="Arial" font-size="10" fill="white" font-weight="bold" text-anchor="middle" opacity="0.9">RUTA DEL VIAJE</text>
+      <g font-family="Arial" font-size="9" fill="white" opacity="0.85">
+        <line x1="522" y1="382" x2="544" y2="382" stroke="#ff6b9d" stroke-width="3" stroke-dasharray="6,3"/>
+        <text x="550" y="386">SJO → Caribe Sur</text>
+        <line x1="522" y1="398" x2="544" y2="398" stroke="#ff9a5c" stroke-width="3" stroke-dasharray="6,3"/>
+        <text x="550" y="402">→ La Fortuna</text>
+        <line x1="522" y1="414" x2="544" y2="414" stroke="#ffd166" stroke-width="3" stroke-dasharray="6,3"/>
+        <text x="550" y="418">→ Puntarenas</text>
+        <line x1="522" y1="430" x2="544" y2="430" stroke="#64d4f4" stroke-width="3" stroke-dasharray="5,3"/>
+        <text x="550" y="434">Ferry ⛴️</text>
+        <line x1="522" y1="446" x2="544" y2="446" stroke="#06d6a0" stroke-width="3" stroke-dasharray="6,3"/>
+        <text x="550" y="450">→ regreso SJO</text>
+        <text x="601" y="464" text-anchor="middle" font-size="8" opacity="0.65">~950km en total</text>
+      </g>
+
+      <!-- ═══ COMPASS ═══ -->
+      <g transform="translate(630,50)">
+        <circle r="18" fill="rgba(0,0,0,0.4)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+        <polygon points="0,-14 4,0 0,4 -4,0" fill="white" opacity="0.9"/>
+        <polygon points="0,14 4,0 0,-4 -4,0" fill="rgba(255,255,255,0.4)"/>
+        <polygon points="-14,0 0,4 4,0 0,-4" fill="rgba(255,255,255,0.4)"/>
+        <polygon points="14,0 0,-4 -4,0 0,4" fill="rgba(255,255,255,0.4)"/>
+        <text x="0" y="-17" font-family="Arial" font-size="8" fill="white" font-weight="bold" text-anchor="middle">N</text>
+      </g>
+
+      <!-- Scale bar -->
+      <g transform="translate(520,440)">
+        <line x1="0" y1="0" x2="60" y2="0" stroke="white" stroke-width="2" opacity="0.6"/>
+        <line x1="0" y1="-4" x2="0" y2="4" stroke="white" stroke-width="2" opacity="0.6"/>
+        <line x1="60" y1="-4" x2="60" y2="4" stroke="white" stroke-width="2" opacity="0.6"/>
+        <text x="30" y="-7" font-family="Arial" font-size="8" fill="white" text-anchor="middle" opacity="0.7">~150 km</text>
+      </g>
+
+    </svg>
+
+    <div class="map-links">
+      <a class="map-link-btn" href="https://www.google.com/maps/d/u/0/edit?hl=es&mid=1BpQjtGTSjlLcHrHZuVLHnN0Ty54" target="_blank">🗺️ Ver mapa completo</a>
+      <a class="map-link-btn gm" href="https://maps.app.goo.gl/UuCEigGLpA9V7cJM6" target="_blank">📍 Shawandha Lodge</a>
+      <a class="map-link-btn" href="https://goo.gl/maps/LaFortuna" target="_blank">📍 La Fortuna</a>
+      <a class="map-link-btn gm" href="https://maps.app.goo.gl/Montezuma" target="_blank">📍 Montezuma</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CLIMA ══ -->
+<div class="new-section">
+  <div class="ns-header azul"><div class="ns-icon">🌤️</div><div><div class="ns-title">¿Qué tiempo hace ahora?</div><div class="ns-sub">Tocá un destino para ver el clima en tiempo real durante el viaje</div></div></div>
+  <div class="ns-body">
+    <div class="clima-cards">
+      <button class="clima-btn" onclick="fetchClima(CLIMA_DESTINOS[0])"><span class="cb-emoji">🐢</span><span class="cb-name">Caribe Sur</span><span class="cb-loc">Puerto Viejo</span></button>
+      <button class="clima-btn" onclick="fetchClima(CLIMA_DESTINOS[1])"><span class="cb-emoji">🌋</span><span class="cb-name">La Fortuna</span><span class="cb-loc">Volcán Arenal</span></button>
+      <button class="clima-btn" onclick="fetchClima(CLIMA_DESTINOS[2])"><span class="cb-emoji">🏝️</span><span class="cb-name">Montezuma</span><span class="cb-loc">Pacífico</span></button>
+      <button class="clima-btn" onclick="fetchClima(CLIMA_DESTINOS[3])"><span class="cb-emoji">✈️</span><span class="cb-name">San José</span><span class="cb-loc">Capital</span></button>
+    </div>
+    <div class="clima-loading" id="clima-loading">⏳ Buscando el clima...</div>
+    <div class="clima-result" id="clima-result">
+      <div class="clima-big-icon" id="clima-icon"></div>
+      <div class="clima-info"><div class="ci-city" id="clima-city"></div><div class="ci-temp" id="clima-temp"></div><div class="ci-desc" id="clima-desc"></div><div class="ci-extra" id="clima-extra"></div></div>
+    </div>
+    <div class="clima-error" id="clima-error">😕 No pudimos obtener el clima. ¿Tienen internet?</div>
+  </div>
+</div>
+
+<!-- ══ MOCHILA ══ -->
+<div class="new-section">
+  <div class="ns-header verde"><div class="ns-icon">🎒</div><div><div class="ns-title">Mi mochila de aventurera</div><div class="ns-sub">Tildá cada cosa que ya tenés lista para el viaje</div></div></div>
+  <div class="ns-body">
+    <div class="mochila-progress"><div class="mochila-bar" id="mochila-bar"></div></div>
+    <div class="mochila-pct" id="mochila-pct">0 de 0 cosas listas</div>
+    <div class="mochila-cats" id="mochila-cats"></div>
+    <div class="mochila-confetti" id="mochila-confetti">🎉 ¡¡MOCHILA LISTA!! ¡¡Estás lista para la aventura!! 🌴🦥🌊</div>
+  </div>
+</div>
+
+<!-- ══ ANIMALES ══ -->
+<div class="new-section">
+  <div class="ns-header rojo"><div class="ns-icon">🦥</div><div><div class="ns-title">Bingo de animales</div><div class="ns-sub">¿Cuántos vas a ver? Tocá cada animal cuando lo encuentres en el viaje</div></div></div>
+  <div class="ns-body">
+    <p class="animales-intro">Costa Rica tiene el 5% de la biodiversidad del planeta. ¡Tocá cada animal para saber más y marcalo cuando lo veas! 👀</p>
+    <div class="animales-progress">
+      <div class="animales-bar-wrap"><div class="animales-bar" id="animales-bar"></div></div>
+      <div class="animales-count" id="animales-count">0 / 24 vistos 🌟</div>
+    </div>
+    <div class="animales-grid" id="animales-grid"></div>
+  </div>
+</div>
+
+<div class="animal-overlay" id="animal-overlay" onclick="if(event.target===this)closeAnimalPopup()">
+  <div class="animal-popup">
+    <button class="ap-close" onclick="closeAnimalPopup()">✕</button>
+    <span class="ap-emoji" id="ap-emoji"></span>
+    <div class="ap-name" id="ap-name"></div>
+    <p class="ap-fact" id="ap-fact"></p>
+    <button class="ap-btn" id="ap-action-btn" onclick="toggleAnimalSpotted()">¡LO VI! Marcar 🎉</button>
+  </div>
+</div>
+
+<!-- ══ TICO WORDS ══ -->
+<div class="new-section">
+  <div class="ns-header morado"><div class="ns-icon">🗣️</div><div><div class="ns-title">¡Hablar como un tico!</div><div class="ns-sub">Tocá cada palabra para ver qué significa</div></div></div>
+  <div class="ns-body">
+    <div class="tico-grid">
+      <div class="tico-card tc1" onclick="toggleTico(this)"><div class="tico-star">🌟</div><div class="tico-word">¡Pura vida!</div><div class="tico-phonetic">pu-ra vi-da</div><div class="tico-tap">TAP PARA VER</div><div class="tico-reveal">La frase más usada de Costa Rica. Significa <strong>todo bien, hola, gracias, adiós</strong> y todo lo demás. ¡Sirve para cualquier situación!</div></div>
+      <div class="tico-card tc2" onclick="toggleTico(this)"><div class="tico-word">¡Tuanis!</div><div class="tico-phonetic">tua-nis</div><div class="tico-tap">TAP PARA VER</div><div class="tico-reveal">Significa <strong>"qué bueno", "qué chido", "genial"</strong>. Si algo te parece increíble: "¡Tuanis mae!" y todos van a entender.</div></div>
+      <div class="tico-card tc3" onclick="toggleTico(this)"><div class="tico-word">Mae</div><div class="tico-phonetic">mae (rima con "rae")</div><div class="tico-tap">TAP PARA VER</div><div class="tico-reveal">Es como el <strong>"che"</strong> uruguayo. Se usa entre amigos para todo: "¡Mae, mirá ese perezoso!" o "¿Cómo estás, mae?"</div></div>
+      <div class="tico-card tc4" onclick="toggleTico(this)"><div class="tico-word">Chunche</div><div class="tico-phonetic">chun-che</div><div class="tico-tap">TAP PARA VER</div><div class="tico-reveal">Significa <strong>"cosa"</strong> cuando no sabés el nombre. "Pasame ese chunche" o "¿Qué es ese chunche verde que vuela ahí?"</div></div>
+      <div class="tico-card tc5" onclick="toggleTico(this)"><div class="tico-word">¡Qué nota!</div><div class="tico-phonetic">qué no-ta</div><div class="tico-tap">TAP PARA VER</div><div class="tico-reveal">Significa <strong>"qué increíble"</strong>. Si ven un animal raro en la selva: "¡Qué nota ese tucán!"</div></div>
+      <div class="tico-card tc1" onclick="toggleTico(this)"><div class="tico-word">Soda</div><div class="tico-phonetic">so-da</div><div class="tico-tap">TAP PARA VER</div><div class="tico-reveal">NO es una bebida — es un <strong>restaurante local pequeño y barato</strong>. Las sodas son donde se come el mejor casado. ¡Siempre busquen la soda local!</div></div>
+      <div class="tico-card tc2" onclick="toggleTico(this)"><div class="tico-word">Casado</div><div class="tico-phonetic">ca-sa-do</div><div class="tico-tap">TAP PARA VER</div><div class="tico-reveal">La comida típica: <strong>arroz, frijoles, ensalada y carne o pollo o pescado</strong>. Se llama "casado" porque es lo que comen los hombres casados todos los días 😂</div></div>
+      <div class="tico-card tc3" onclick="toggleTico(this)"><div class="tico-word">Gallo pinto</div><div class="tico-phonetic">ga-yo pin-to</div><div class="tico-tap">TAP PARA VER</div><div class="tico-reveal"><strong>Arroz mezclado con frijoles negros</strong> — el desayuno nacional. Se come con huevos fritos y natilla. ¡Van a desayunar esto muchos días!</div></div>
+      <div class="tico-card tc4" onclick="toggleTico(this)"><div class="tico-word">Diay</div><div class="tico-phonetic">dia-i</div><div class="tico-tap">TAP PARA VER</div><div class="tico-reveal">Como decir <strong>"bueno, pues..." o "y qué..."</strong>. Se usa al principio cuando no sabés muy bien qué responder. "Diay, no sé mae..."</div></div>
+      <div class="tico-card tc5" onclick="toggleTico(this)"><div class="tico-word">¡Upe!</div><div class="tico-phonetic">u-pe</div><div class="tico-tap">TAP PARA VER</div><div class="tico-reveal">Se grita para <strong>avisar que llegaste a la puerta de alguien</strong>. Es tocar el timbre con la voz. Si no hay nadie en un hostel: "¡Upe, upe!"</div></div>
+      <div class="tico-card tc1" onclick="toggleTico(this)"><div class="tico-word">Pulpería</div><div class="tico-phonetic">pul-pe-rí-a</div><div class="tico-tap">TAP PARA VER</div><div class="tico-reveal">Un <strong>almacén pequeño de barrio</strong> — como un kiosko. Tienen agua, snacks, helados. Más barato que el supermercado.</div></div>
+      <div class="tico-card tc2" onclick="toggleTico(this)"><div class="tico-word">Macha / Macho</div><div class="tico-phonetic">ma-cha / ma-cho</div><div class="tico-tap">TAP PARA VER</div><div class="tico-reveal">Le dicen así a las personas <strong>rubias o de piel clara</strong>. "¡Hola macha!" es un piropo, no una ofensa. ¡Es muy simpático!</div></div>
+      <div class="tico-card tc3" onclick="toggleTico(this)"><div class="tico-word">Con mucho gusto</div><div class="tico-phonetic">con mu-cho gus-to</div><div class="tico-tap">TAP PARA VER</div><div class="tico-reveal">La forma tica de decir <strong>"de nada"</strong>. Si agradecés algo, siempre te responden "¡con mucho gusto!" con una sonrisa enorme.</div></div>
+      <div class="tico-card tc4" onclick="toggleTico(this)"><div class="tico-word">Suave</div><div class="tico-phonetic">sua-ve</div><div class="tico-tap">TAP PARA VER</div><div class="tico-reveal">Significa <strong>"esperá", "para un poco", "tranquilo"</strong>. Si alguien va muy rápido: "¡Suave mae, suave!" Es muy gracioso decirlo.</div></div>
+      <div class="tico-card tc5" onclick="toggleTico(this)"><div class="tico-word">Zarpe</div><div class="tico-phonetic">zar-pe</div><div class="tico-tap">TAP PARA VER</div><div class="tico-reveal">Significa <strong>"la última de algo"</strong>. "Tomemos el zarpe" = tomemos el último. También: "fue un zarpe" = fue lo máximo, lo mejor del viaje.</div></div>
+      <div class="tico-card tc1" onclick="toggleTico(this)"><div class="tico-word">¡Qué chiva!</div><div class="tico-phonetic">qué chi-va</div><div class="tico-tap">TAP PARA VER</div><div class="tico-reveal">Significa <strong>"qué buena onda", "qué cool"</strong>. Si algo les encanta: "¡Qué chiva este perezoso mae!" Funciona para personas y cosas.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TRIVIA -->
+<div class="trivia-section">
+  <div class="trivia-header">
+    <h3>🧠 ¡Trivia de Costa Rica!</h3>
+    <p>¿Cuánto saben de Costa Rica? ¡Respondan las preguntas y descubran datos increíbles del viaje!</p>
+  </div>
+  <div class="trivia-score-bar">
+    <span>Pregunta <span id="q-current">1</span> de <span id="q-total">15</span></span>
+    <span>✅ <span id="q-score">0</span> correctas</span>
+  </div>
+  <div class="trivia-body">
+    <div id="trivia-questions"></div>
+    <div class="trivia-result" id="trivia-result">
+      <div class="result-emoji" id="result-emoji"></div>
+      <div class="result-title" id="result-title"></div>
+      <div class="result-sub" id="result-sub"></div>
+      <button class="restart-btn" onclick="startTrivia()">🔄 ¡Jugar de nuevo!</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── COUNTDOWN ──
+function updateCountdown() {
+  const target = new Date('2026-06-24T08:00:00');
+  const now = new Date();
+  const diff = target - now;
+  if (diff <= 0) {
+    document.getElementById('cnt-days').textContent = '¡YA!';
+    document.getElementById('cnt-hours').textContent = '🎉';
+    document.getElementById('cnt-mins').textContent = '🎉';
+    return;
+  }
+  document.getElementById('cnt-days').textContent = Math.floor(diff / 86400000);
+  document.getElementById('cnt-hours').textContent = Math.floor((diff % 86400000) / 3600000);
+  document.getElementById('cnt-mins').textContent = Math.floor((diff % 3600000) / 60000);
+}
+updateCountdown();
+setInterval(updateCountdown, 60000);
+
+// ── TRIVIA DATA ──
+const allQuestions = [
+  { q:"¿Cuántas horas al día duermen los perezosos?", opts:["6 horas","12 horas","20 horas","24 horas"], correct:2, fact:"¡Los perezosos duermen hasta 20 horas por día! Y bajan del árbol al suelo solo 1 vez por semana para ir al baño. Son los animales más lentos del mundo." },
+  { q:"¿De qué color es el Río Celeste y por qué?", opts:["Verde por las algas","Azul eléctrico por reacción volcánica","Rojo por el barro","Transparente y parece azul por el cielo"], correct:1, fact:"¡El Río Celeste es azul eléctrico por una reacción química entre minerales volcánicos! No existe otro río de ese color en el mundo. Está dentro del Parque Nacional Volcán Tenorio." },
+  { q:"¿Cuántos volcanes tiene Costa Rica?", opts:["5 volcanes","20 volcanes","61 volcanes","100 volcanes"], correct:2, fact:"¡Costa Rica tiene 61 volcanes! El más famoso es el Arenal, que tiene 1.670 metros de altura y estuvo activo hasta 2010. Lo van a ver de fondo desde la villa." },
+  { q:"¿Cuántas especies de mariposas hay en Costa Rica?", opts:["50 especies","300 especies","1.200 especies","50 especies"], correct:2, fact:"¡Más de 1.200 especies de mariposas! Eso es más que en todo el continente europeo junto. Van a ver muchas volando en la selva del Caribe." },
+  { q:"¿Desde cuándo Costa Rica no tiene ejército?", opts:["Desde 1900","Desde 1948","Desde 1980","Siempre lo tuvo"], correct:1, fact:"¡Costa Rica abolió su ejército en 1948! Es uno de los pocos países del mundo sin fuerzas armadas. Usan ese dinero para educación y salud. Por eso es tan tranquilo y feliz." },
+  { q:"¿Qué porcentaje de su electricidad produce Costa Rica con energía renovable?", opts:["30%","60%","85%","Casi el 100%"], correct:3, fact:"¡Costa Rica produce casi el 100% de su electricidad con energía renovable! Usan ríos, viento y volcanes. Es uno de los países más verdes del planeta." },
+  { q:"¿Cuántas especies de aves hay en Costa Rica?", opts:["200 especies","500 especies","900 especies","2000 especies"], correct:2, fact:"¡Más de 900 especies de aves! Eso es más que en toda América del Norte junta. Van a ver tucanes, loros, colibríes y aves rarísimas. ¡Tengan los ojos bien abiertos!" },
+  { q:"¿Por qué la rana venenosa roja y azul de Costa Rica es famosa?", opts:["Es la más grande del mundo","Es tan tóxica que la usaban en flechas","Puede vivir 100 años","Canta canciones de noche"], correct:1, fact:"¡La ranita venenosa roja y azul de Costa Rica es tan tóxica que los indígenas la usaban para envenenar flechas! Se llama 'rana dardo' o 'rana flecha'. Es pequeñita pero muy peligrosa." },
+  { q:"¿A cuánta altura está San José, la capital de Costa Rica?", opts:["100 metros","500 metros","1.170 metros","2.000 metros"], correct:2, fact:"¡San José está a 1.170 metros de altura sobre el mar! Por eso hace fresquito aunque sea Centroamérica. Es rodeada por montañas y volcanes." },
+  { q:"¿Qué porcentaje de la biodiversidad mundial tiene Costa Rica?", opts:["0,5%","1%","5%","20%"], correct:2, fact:"¡Costa Rica tiene el 5% de la biodiversidad de todo el planeta! Siendo solo el 0,03% de la superficie de la Tierra. Es el país con más biodiversidad por km² del mundo." },
+  { q:"¿Cuántos tipos de monos viven en Costa Rica?", opts:["1 tipo","2 tipos","4 tipos","10 tipos"], correct:2, fact:"¡4 especies de monos! Cariblancos, aulladores, araña y ardilla. En el Caribe van a ver monos cariblancos y aulladores. Todos salvajes y libres en la naturaleza." },
+  { q:"¿Cuántos millones de años llevan las tortugas marinas en la Tierra?", opts:["10 millones","50 millones","110 millones","200 millones"], correct:2, fact:"¡Las tortugas marinas llevan 110 millones de años en la Tierra! ¡Vieron los dinosaurios! En Costa Rica vienen a anidar en las playas del Caribe." },
+  { q:"¿Cuántos océanos bordean Costa Rica?", opts:["Uno (el Pacífico)","Dos (Pacífico y Caribe)","Ninguno, es tierra adentro","Tres océanos"], correct:1, fact:"¡Costa Rica tiene costa en dos océanos! El Pacífico al oeste y el Mar Caribe al este. ¡Ustedes van a ver los dos en el mismo viaje! Primero el Caribe y después el Pacífico." },
+  { q:"¿Qué significa 'Pura Vida' en Costa Rica?", opts:["Agua pura","Todo bien, saludo y despedida","Solo significa vida pura","Es el nombre de un refresco"], correct:1, fact:"¡'Pura Vida' es la expresión más usada de Costa Rica! La usan para saludar, despedirse, agradecer y decir que todo va bien. Es la filosofía de vida de los costarricenses." },
+  { q:"¿A qué temperatura llega el agua de las termales de La Fortuna?", opts:["20 grados","30 grados","40 grados","60 grados"], correct:2, fact:"¡El agua de las termales Baldi llega a 40 grados! Viene directamente del interior del Volcán Arenal calentada por la actividad geotérmica. ¡Como una bañadera gigante natural!" },
+  { q:"¿Cuánto dura la caminata para llegar a la Catarata La Fortuna?", opts:["5 minutos","30 minutos","2 horas","Todo el día"], correct:1, fact:"¡Solo 30 minutos de caminata! La Catarata La Fortuna tiene 70 metros de altura y al pie hay una piscina natural donde se puede nadar. Es una de las cascadas más impresionantes de Costa Rica." },
+  { q:"¿Cuándo fue creada la primera reserva natural de Costa Rica, Cabo Blanco?", opts:["1900","1930","1963","1990"], correct:2, fact:"¡La Reserva Natural Cabo Blanco fue creada en 1963! Es la más antigua de Costa Rica y está en la punta de la Península de Nicoya, donde van a ir en el Pacífico. Tiene playas vírgenes y monos." },
+  { q:"¿Qué tan rápido nada un perezoso en el agua?", opts:["No pueden nadar","Son lentos igual que en tierra","Son sorprendentemente rápidos nadando","Flotan pero no nadan"], correct:2, fact:"¡Los perezosos son sorprendentemente buenos nadadores! A pesar de ser los animales más lentos en tierra, en el agua son ágiles y pueden nadar distancias largas. ¡Nadie lo espera!" },
+  { q:"¿Cuántas patas tiene un cangrejo?", opts:["4 patas","6 patas","8 patas","10 patas"], correct:3, fact:"¡Los cangrejos tienen 10 patas! Las primeras dos son las pinzas (también llamadas quelíceras) y las otras 8 son para caminar. En las playas del Caribe van a encontrar muchos." },
+  { q:"¿Por qué el ferry de Puntarenas a Paquera es especial en nuestro viaje?", opts:["Es el ferry más rápido del mundo","Cruzamos el Golfo de Nicoya con el auto adentro","Es gratuito","Tiene toboganes acuáticos"], correct:1, fact:"¡Cruzamos el Golfo de Nicoya con el auto adentro del ferry! Tarda una hora navegando. Desde la cubierta se ven montañas, pelícanos y a veces delfines. Es una de las partes más emocionantes del viaje." },
+];
+
+let currentQ = 0;
+let score = 0;
+let answered = false;
+let shuffled = [];
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function startTrivia() {
+  currentQ = 0;
+  score = 0;
+  shuffled = shuffle(allQuestions).slice(0, 15);
+  document.getElementById('q-total').textContent = shuffled.length;
+  document.getElementById('q-score').textContent = 0;
+  document.getElementById('trivia-result').classList.remove('show');
+  showQuestion();
+}
+
+function showQuestion() {
+  document.getElementById('q-current').textContent = currentQ + 1;
+  const q = shuffled[currentQ];
+  const container = document.getElementById('trivia-questions');
+  container.innerHTML = '';
+
+  const div = document.createElement('div');
+  div.className = 'tq';
+  div.innerHTML = `
+    <div class="tq-num">Pregunta ${currentQ + 1} de ${shuffled.length}</div>
+    <div class="tq-text">${q.q}</div>
+    <div class="tq-opts">
+      ${q.opts.map((o, i) => `<button class="tq-opt" onclick="answer(${i})">${String.fromCharCode(65+i)}. ${o}</button>`).join('')}
+    </div>
+    <div class="tq-fact" id="fact-box">🌿 <strong>Dato increíble:</strong> ${q.fact}</div>
+  `;
+  container.appendChild(div);
+  answered = false;
+}
+
+function answer(idx) {
+  if (answered) return;
+  answered = true;
+  const q = shuffled[currentQ];
+  const opts = document.querySelectorAll('.tq-opt');
+
+  opts.forEach((btn, i) => {
+    btn.disabled = true;
+    if (i === q.correct) btn.classList.add('reveal');
+    if (i === idx && idx !== q.correct) btn.classList.add('wrong');
+    if (i === idx && idx === q.correct) btn.classList.add('correct');
+  });
+
+  if (idx === q.correct) {
+    score++;
+    document.getElementById('q-score').textContent = score;
+  }
+
+  document.getElementById('fact-box').classList.add('show');
+
+  setTimeout(() => {
+    currentQ++;
+    if (currentQ < shuffled.length) {
+      showQuestion();
+    } else {
+      showResult();
+    }
+  }, 3000);
+}
+
+function showResult() {
+  document.getElementById('trivia-questions').innerHTML = '';
+  const pct = Math.round((score / shuffled.length) * 100);
+  let emoji, title, sub;
+  if (pct === 100) { emoji='🏆'; title='¡PERFECTAS! ¡Son expertas en Costa Rica!'; sub='¡Increíble! Contestaron todo bien. ¡Van a impresionar a todos en el viaje!'; }
+  else if (pct >= 75) { emoji='🌟'; title='¡Muy bien! ¡Casi expertas!'; sub=`${score} de ${shuffled.length} correctas. ¡Ya saben un montón de Costa Rica!`; }
+  else if (pct >= 50) { emoji='🦥'; title='¡Bien! ¡Aprendiendo!'; sub=`${score} de ${shuffled.length} correctas. Cuando lleguen al viaje van a saber todo esto de verdad.`; }
+  else { emoji='🐢'; title='¡A practicar! 🐢'; sub=`${score} de ${shuffled.length} correctas. ¡No se preocupen — al volver del viaje van a saberlo todo!`; }
+  document.getElementById('result-emoji').textContent = emoji;
+  document.getElementById('result-title').textContent = title;
+  document.getElementById('result-sub').textContent = sub;
+  document.getElementById('trivia-result').classList.add('show');
+}
+
+startTrivia();
+
+// ══════════════════════════════════════════════
+// CLIMA
+// ══════════════════════════════════════════════
+const CLIMA_DESTINOS = [
+  { nombre:'🌊 Caribe Sur', ciudad:'Puerto Viejo de Talamanca', lat:9.6557, lon:-82.7529, emoji:'🐢' },
+  { nombre:'🌋 La Fortuna', ciudad:'La Fortuna, Alajuela', lat:10.4669, lon:-84.6438, emoji:'🌋' },
+  { nombre:'🌅 Montezuma', ciudad:'Montezuma, Puntarenas', lat:9.6553, lon:-85.0679, emoji:'🏝️' },
+  { nombre:'🏙️ San José', ciudad:'San José', lat:9.9281, lon:-84.0907, emoji:'✈️' },
+];
+
+async function fetchClima(destino) {
+  const result = document.getElementById('clima-result');
+  const loading = document.getElementById('clima-loading');
+  const errDiv = document.getElementById('clima-error');
+  result.classList.remove('show');
+  errDiv.classList.remove('show');
+  loading.classList.add('show');
+  try {
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${destino.lat}&longitude=${destino.lon}&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m&timezone=America%2FCosta_Rica`;
+    const res = await fetch(url);
+    const data = await res.json();
+    const c = data.current;
+    const wc = c.weather_code;
+    const icon = weatherIcon(wc);
+    const desc = weatherDesc(wc);
+    document.getElementById('clima-icon').textContent = icon;
+    document.getElementById('clima-city').textContent = destino.ciudad;
+    document.getElementById('clima-temp').textContent = Math.round(c.temperature_2m) + '°C';
+    document.getElementById('clima-desc').textContent = desc;
+    document.getElementById('clima-extra').textContent = `💧 Humedad: ${c.relative_humidity_2m}% · 💨 Viento: ${Math.round(c.wind_speed_10m)} km/h`;
+    loading.classList.remove('show');
+    result.classList.add('show');
+  } catch(e) {
+    loading.classList.remove('show');
+    errDiv.classList.add('show');
+  }
+}
+
+function weatherIcon(code) {
+  if (code === 0) return '☀️';
+  if (code <= 2) return '⛅';
+  if (code <= 3) return '☁️';
+  if (code <= 49) return '🌫️';
+  if (code <= 57) return '🌧️';
+  if (code <= 67) return '🌧️';
+  if (code <= 77) return '❄️';
+  if (code <= 82) return '🌦️';
+  if (code <= 86) return '🌨️';
+  if (code >= 95) return '⛈️';
+  return '🌤️';
+}
+
+function weatherDesc(code) {
+  if (code === 0) return 'Cielo despejado ☀️';
+  if (code <= 2) return 'Parcialmente nublado';
+  if (code <= 3) return 'Nublado';
+  if (code <= 49) return 'Neblina';
+  if (code <= 57) return 'Llovizna';
+  if (code <= 67) return 'Lluvia 🌧️';
+  if (code <= 77) return 'Nieve ❄️';
+  if (code <= 82) return 'Chubascos';
+  if (code >= 95) return '¡Tormenta! ⛈️';
+  return 'Variable';
+}
+
+// ══════════════════════════════════════════════
+// MOCHILA
+// ══════════════════════════════════════════════
+const MOCHILA_ITEMS = {
+  '👚 Ropa': [
+    {e:'👕',n:'Remeras livianas'},{e:'🩳',n:'Shorts'},{e:'🩱',n:'Malla de baño'},
+    {e:'🧥',n:'Buzo / campera'},{e:'🧦',n:'Medias varias'},{e:'🩴',n:'Ojotas'},
+    {e:'👟',n:'Zapatillas cerradas'},{e:'🧢',n:'Gorra o sombrero'},{e:'🕶️',n:'Anteojos de sol'},
+  ],
+  '🏖️ Playa y aventura': [
+    {e:'🤿',n:'Snorkel y antifaz'},{e:'🌊',n:'Tabla de flotar'},{e:'🎒',n:'Mochila chica'},
+    {e:'💊',n:'Pastillas para el sol'},{e:'🔦',n:'Linterna'},
+  ],
+  '🧴 Salud y cuidado': [
+    {e:'🧴',n:'Repelente de mosquitos'},{e:'☀️',n:'Protector solar'},{e:'🪥',n:'Cepillo y pasta'},
+    {e:'🧼',n:'Jabón y shampoo'},{e:'💊',n:'Botiquín básico'},{e:'🩹',n:'Curitas'},
+    {e:'🧻',n:'Papel higiénico extra'},{e:'😷',n:'Mascarillas'},
+  ],
+  '📱 Tech y documentos': [
+    {e:'📱',n:'Celular cargado'},{e:'🔌',n:'Cargador y cables'},{e:'🔋',n:'Batería portátil'},
+    {e:'📷',n:'Cámara / GoPro'},{e:'🛂',n:'Pasaporte'},{e:'💳',n:'Tarjeta y efectivo'},
+    {e:'✈️',n:'Tickets y reservas'},
+  ],
+  '🎒 Extras para el viaje': [
+    {e:'💧',n:'Botella de agua'},{e:'🍪',n:'Snacks para el auto'},{e:'📚',n:'Libro o juego'},
+    {e:'🎧',n:'Auriculares'},{e:'🌂',n:'Paraguas chico'},{e:'🧺',n:'Bolsa de playa'},
+  ],
+};
+
+function initMochila() {
+  const saved = JSON.parse(localStorage.getItem('mochila_cr') || '{}');
+  let totalItems = 0, checkedItems = 0;
+  const container = document.getElementById('mochila-cats');
+  container.innerHTML = '';
+  for (const [cat, items] of Object.entries(MOCHILA_ITEMS)) {
+    totalItems += items.length;
+    const catDiv = document.createElement('div');
+    catDiv.className = 'mochila-cat';
+    catDiv.innerHTML = `<h4>${cat}</h4><div class="mochila-items" id="cat-${cat.replace(/[^a-z]/gi,'_')}"></div>`;
+    container.appendChild(catDiv);
+    const grid = catDiv.querySelector('.mochila-items');
+    items.forEach(item => {
+      const key = cat + '|' + item.n;
+      const isChecked = !!saved[key];
+      if (isChecked) checkedItems++;
+      const div = document.createElement('div');
+      div.className = 'mochila-item' + (isChecked ? ' checked' : '');
+      div.innerHTML = `<div class="mi-box">${isChecked ? '✓' : ''}</div><span class="mi-emoji">${item.e}</span><span>${item.n}</span>`;
+      div.onclick = () => toggleMochila(div, key);
+      grid.appendChild(div);
+    });
+  }
+  updateMochilaBar(checkedItems, totalItems);
+}
+
+function toggleMochila(div, key) {
+  const saved = JSON.parse(localStorage.getItem('mochila_cr') || '{}');
+  const wasChecked = div.classList.contains('checked');
+  if (wasChecked) { div.classList.remove('checked'); div.querySelector('.mi-box').textContent = ''; delete saved[key]; }
+  else { div.classList.add('checked'); div.querySelector('.mi-box').textContent = '✓'; saved[key] = true; }
+  localStorage.setItem('mochila_cr', JSON.stringify(saved));
+  const all = document.querySelectorAll('.mochila-item');
+  const checked = document.querySelectorAll('.mochila-item.checked');
+  updateMochilaBar(checked.length, all.length);
+}
+
+function updateMochilaBar(c, t) {
+  const pct = Math.round((c / t) * 100);
+  document.getElementById('mochila-bar').style.width = pct + '%';
+  document.getElementById('mochila-pct').textContent = `${c} de ${t} cosas listas (${pct}%)`;
+  const conf = document.getElementById('mochila-confetti');
+  if (pct === 100) conf.classList.add('show');
+  else conf.classList.remove('show');
+}
+
+// ══════════════════════════════════════════════
+// ANIMALES
+// ══════════════════════════════════════════════
+const ANIMALES = [
+  {e:'🦥',n:'Perezoso',en:'Sloth',f:'¡Duerme hasta 20hs por día y baja al suelo solo 1 vez por semana!'},
+  {e:'🐒',n:'Mono Cariblanco',en:'White-faced Capuchin',f:'Es el mono más listo de Costa Rica. ¡Usa herramientas como piedras para abrir cocos!'},
+  {e:'🦜',n:'Guacamaya Roja',en:'Scarlet Macaw',f:'Vuela en pareja toda su vida. Si perdés a tu pareja, ¡nunca buscás otra!'},
+  {e:'🦎',n:'Iguana Verde',en:'Green Iguana',f:'Puede caer desde 15 metros de altura y no se lastima nada. ¡Super resistente!'},
+  {e:'🐢',n:'Tortuga Marina',en:'Sea Turtle',f:'Lleva 110 millones de años en la Tierra. ¡Vio los dinosaurios y siguió adelante!'},
+  {e:'🐸',n:'Rana Venenosa',en:'Poison Dart Frog',f:'Es tan colorida para avisar que es tóxica. Los indígenas la usaban para envenenar flechas.'},
+  {e:'🦋',n:'Mariposa Morfo',en:'Blue Morpho',f:'Sus alas azules no tienen pigmento — el color viene de cómo reflejan la luz. ¡Magia óptica!'},
+  {e:'🐊',n:'Cocodrilo',en:'American Crocodile',f:'Puede vivir hasta 70 años. El río Tárcoles tiene la mayor densidad de cocos del mundo.'},
+  {e:'🦩',n:'Garza Grande',en:'Great Egret',f:'Caza quedándose completamente quieta durante minutos. ¡Tiene más paciencia que vos!'},
+  {e:'🐬',n:'Delfín',en:'Common Dolphin',f:'En Manzanillo nadan en grupos de hasta 300 delfines. ¡Una locura verlos desde la orilla!'},
+  {e:'🦜',n:'Tucán',en:'Keel-billed Toucan',f:'Su pico enorme pesa poquísimo porque es hueco. Lo usa para regular su temperatura corporal.'},
+  {e:'🐿️',n:'Coatí',en:'White-nosed Coati',f:'Vive en grupos de hasta 30 hembras. Los machos viven solos — ¡qué vida!'},
+  {e:'🦅',n:'Águila Harpía',en:'Harpy Eagle',f:'Es el águila más grande del mundo. Puede atrapar monos al vuelo con sus garras gigantes.'},
+  {e:'🐍',n:'Boa Constrictora',en:'Boa Constrictor',f:'No es venenosa — mata apretando. Puede comer animales enteros más grandes que su cabeza.'},
+  {e:'🦌',n:'Venado Cola Blanca',en:'White-tailed Deer',f:'Cuando corre levanta la cola blanca para avisar a los demás del peligro. ¡Sistema de alarma natural!'},
+  {e:'🦟',n:'Mariposa Búho',en:'Owl Butterfly',f:'Tiene manchas que parecen ojos de búho para asustar a los pájaros que quieren comérsela.'},
+  {e:'🐻',n:'Tapir',en:'Baird\'s Tapir',f:'Es el mamífero terrestre más grande de Costa Rica y está en peligro. ¡Muy raro verlo!'},
+  {e:'🦖',n:'Basilisco',en:'Basilisk Lizard',f:'¡Puede correr sobre el agua! Por eso lo llaman "la lagartija de Jesús". Alcanza 1.5m/s.'},
+  {e:'🐟',n:'Pez Loro',en:'Parrotfish',f:'Come coral con sus dientes de pico y hace arena con él. ¡Las playas del Caribe son su popó!'},
+  {e:'🦦',n:'Nutria Neotropical',en:'Neotropical Otter',f:'Es una de las pocas criaturas que juega por diversión. Las ves deslizándose en la orilla de ríos.'},
+  {e:'🐦',n:'Quetzal',en:'Resplendent Quetzal',f:'Tiene una cola de 60cm. Los mayas lo adoraban como dios. Es casi imposible verlo — ¡buena suerte!'},
+  {e:'🦀',n:'Cangrejo Azul',en:'Land Crab',f:'En el Caribe miles de cangrejos cruzan las rutas al mismo tiempo para ir a desovar al mar.'},
+  {e:'🐙',n:'Pulpo',en:'Common Octopus',f:'Puede cambiar de color en menos de 1 segundo. Tiene tres corazones y sangre azul.'},
+  {e:'⭐',n:'Estrella de Mar',en:'Sea Star',f:'Puede regenerar brazos perdidos. Algunas especies pueden regenerar casi todo el cuerpo.'},
+];
+
+let animalPopupCurrent = null;
+
+function initAnimales() {
+  const saved = JSON.parse(localStorage.getItem('animales_cr') || '{}');
+  const grid = document.getElementById('animales-grid');
+  grid.innerHTML = '';
+  let spotted = 0;
+  ANIMALES.forEach((a, i) => {
+    const isSpotted = !!saved[i];
+    if (isSpotted) spotted++;
+    const card = document.createElement('div');
+    card.className = 'animal-card' + (isSpotted ? ' spotted' : '');
+    card.innerHTML = `<span class="animal-emoji">${a.e}</span><div class="animal-name">${a.n}</div><div class="animal-name-es">${a.en}</div>`;
+    card.onclick = () => openAnimalPopup(i);
+    grid.appendChild(card);
+  });
+  updateAnimalesBar(spotted);
+}
+
+function openAnimalPopup(idx) {
+  const saved = JSON.parse(localStorage.getItem('animales_cr') || '{}');
+  const a = ANIMALES[idx];
+  const isSpotted = !!saved[idx];
+  animalPopupCurrent = idx;
+  document.getElementById('ap-emoji').textContent = a.e;
+  document.getElementById('ap-name').textContent = a.n;
+  document.getElementById('ap-fact').textContent = a.f;
+  const btn = document.getElementById('ap-action-btn');
+  if (isSpotted) { btn.textContent = '✅ ¡Ya lo vi! Desmarcar'; btn.className = 'ap-btn unspot'; }
+  else { btn.textContent = '¡LO VI! Marcar 🎉'; btn.className = 'ap-btn'; }
+  document.getElementById('animal-overlay').classList.add('show');
+}
+
+function closeAnimalPopup() { document.getElementById('animal-overlay').classList.remove('show'); }
+
+function toggleAnimalSpotted() {
+  const idx = animalPopupCurrent;
+  const saved = JSON.parse(localStorage.getItem('animales_cr') || '{}');
+  if (saved[idx]) delete saved[idx];
+  else { saved[idx] = true; confettiBlast(); }
+  localStorage.setItem('animales_cr', JSON.stringify(saved));
+  closeAnimalPopup();
+  initAnimales();
+}
+
+function updateAnimalesBar(spotted) {
+  const pct = Math.round((spotted / ANIMALES.length) * 100);
+  document.getElementById('animales-bar').style.width = pct + '%';
+  document.getElementById('animales-count').textContent = `${spotted} / ${ANIMALES.length} vistos 🌟`;
+}
+
+function confettiBlast() {
+  // simple emoji confetti using DOM
+  const emojis = ['🎉','⭐','🌟','🦋','🌺','✨'];
+  for (let i = 0; i < 10; i++) {
+    const el = document.createElement('div');
+    el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    el.style.cssText = `position:fixed;font-size:24px;pointer-events:none;z-index:9999;left:${20+Math.random()*60}%;top:${20+Math.random()*40}%;animation:confettiFall 1.5s ease-out forwards`;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 1600);
+  }
+}
+
+// ══════════════════════════════════════════════
+// TICO WORDS
+// ══════════════════════════════════════════════
+// Toggle reveal on tico cards
+function toggleTico(card) {
+  const rev = card.querySelector('.tico-reveal');
+  const tap = card.querySelector('.tico-tap');
+  rev.classList.toggle('show');
+  tap.textContent = rev.classList.contains('show') ? 'TAP PARA CERRAR' : 'TAP PARA VER';
+}
+
+// Init on load
+initMochila();
+initAnimales();
+</script>
+</body>
+</html>
